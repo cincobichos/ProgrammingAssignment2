@@ -1,15 +1,24 @@
-## Put comments here that give an overall description of what your
-## functions do
+## These functions make a matrix cache its own inverse and recover it from cache.
+# I thought it was too simple to be right, but if x is a matrix it performs all right. 
+# I was not able to make a function which makes a matrix;
+#from the discussions in the forum I was in doubt if the matrix was to be built inside os the function
+# or passed as an argument.
+#So, for these functions, the nmatrix has to be passed as an argument.
 
-## Write a short comment describing this function
-
-makeCacheMatrix <- function(x = matrix()) {
-
+# This function calculate a inverse of a matrix and cache it.
+makeCacheMatrix <- function (x= matrix ()) {
+  im <- solve (x)
+  invm <<- im
+  rm (im)
 }
 
-
-## Write a short comment describing this function
+# This function recover the cached inverse matrix or, if it does not exist, calculate and returns it.
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+  if(exists("invm")) {
+    message("getting cached data")
+    return(invm)}
+      else
+        return (solve (x))
 }
+ 
